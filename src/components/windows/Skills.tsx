@@ -41,7 +41,7 @@ const Skills: React.FC = () => {
   ]
 
   return (
-    <div className="min-w-[500px] max-w-[650px]">
+    <div className="md:min-w-[500px] md:max-w-[650px]">
       <div className="mb-4 pb-2 border-b-2 border-win95-dark">
         <h2 className="text-base text-win95-text m-0">⚙️ Skills.sys</h2>
       </div>
@@ -53,7 +53,7 @@ const Skills: React.FC = () => {
           <p className="m-0"><strong>Version:</strong> Senior Engineer v5.0</p>
         </div>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
           {skillCategories.map(({ category, icon, skills }) => (
             <div key={category} className="win95-panel p-3">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-win95-dark">

@@ -21,7 +21,7 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <div className="min-w-[450px] max-w-[600px]">
+    <div className="md:min-w-[450px] md:max-w-[600px]">
       <div className="mb-4 pb-2 border-b-2 border-win95-dark">
         <h2 className="text-base text-win95-text m-0">📧 Contact.app</h2>
       </div>
@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
           Let's connect! Reach out for collaboration, opportunities, or just to say hi.
         </p>
 
-        <div className="grid grid-cols-2 gap-2 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
           <div className="win95-panel flex gap-3 items-center p-2.5">
             <span className="text-2xl leading-none">📧</span>
             <div className="flex-1 min-w-0">

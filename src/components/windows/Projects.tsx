@@ -46,7 +46,7 @@ const Projects: React.FC = () => {
   ]
 
   return (
-    <div className="min-w-[500px] max-w-[700px]">
+    <div className="md:min-w-[500px] md:max-w-[700px]">
       <div className="mb-4 pb-2 border-b-2 border-win95-dark">
         <h2 className="text-base text-win95-text m-0">📁 My Projects</h2>
       </div>
@@ -56,7 +56,7 @@ const Projects: React.FC = () => {
           Here are some of the projects I've worked on. Each represents unique challenges and learning experiences.
         </p>
 
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
           {projects.map(project => (
             <div key={project.id} className="win95-panel p-3 flex flex-col gap-2">
               <div className="flex items-center gap-2 mb-1">

@@ -3,6 +3,7 @@ import Desktop from './components/Desktop'
 import Taskbar from './components/Taskbar'
 import Window from './components/Window'
 import DesktopIcon from './components/DesktopIcon'
+import MobileMenu from './components/MobileMenu'
 import About from './components/windows/About'
 import Projects from './components/windows/Projects'
 import Skills from './components/windows/Skills'
@@ -17,6 +18,7 @@ export interface WindowState {
   isMinimized: boolean
   zIndex: number
   position: { x: number; y: number }
+  icon: string
 }
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
       isOpen: false,
       isMinimized: false,
       zIndex: 1,
-      position: { x: 100, y: 80 }
+      position: { x: 100, y: 80 },
+      icon: '💻'
     },
     {
       id: 'projects',
@@ -37,7 +40,8 @@ function App() {
       isOpen: false,
       isMinimized: false,
       zIndex: 1,
-      position: { x: 150, y: 120 }
+      position: { x: 150, y: 120 },
+      icon: '📁'
     },
     {
       id: 'skills',
@@ -46,7 +50,8 @@ function App() {
       isOpen: false,
       isMinimized: false,
       zIndex: 1,
-      position: { x: 200, y: 160 }
+      position: { x: 200, y: 160 },
+      icon: '⚙️'
     },
     {
       id: 'contact',
@@ -55,11 +60,13 @@ function App() {
       isOpen: false,
       isMinimized: false,
       zIndex: 1,
-      position: { x: 250, y: 200 }
+      position: { x: 250, y: 200 },
+      icon: '📧'
     }
   ])
 
   const [highestZIndex, setHighestZIndex] = useState(1)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const openWindow = (id: string) => {
     setWindows(prev => prev.map(win => {
@@ -70,6 +77,7 @@ function App() {
       }
       return win
     }))
+    setIsMobileMenuOpen(false)
   }
 
   const closeWindow = (id: string) => {
@@ -115,30 +123,40 @@ function App() {
   return (
     <>
       <Desktop>
-        {/* Desktop Icons */}
-        <DesktopIcon
-          icon="💻"
-          label="About.exe"
-          onDoubleClick={() => openWindow('about')}
-          position={{ x: 20, y: 20 }}
-        />
-        <DesktopIcon
-          icon="📁"
-          label="Projects"
-          onDoubleClick={() => openWindow('projects')}
-          position={{ x: 20, y: 120 }}
-        />
-        <DesktopIcon
-          icon="⚙️"
-          label="Skills.sys"
-          onDoubleClick={() => openWindow('skills')}
-          position={{ x: 20, y: 220 }}
-        />
-        <DesktopIcon
-          icon="📧"
-          label="Contact.app"
-          onDoubleClick={() => openWindow('contact')}
-          position={{ x: 20, y: 320 }}
+        {/* Desktop Icons - Hidden on mobile */}
+        <div className="hidden md:block">
+          <DesktopIcon
+            icon="💻"
+            label="About.exe"
+            onDoubleClick={() => openWindow('about')}
+            position={{ x: 20, y: 20 }}
+          />
+          <DesktopIcon
+            icon="📁"
+            label="Projects"
+            onDoubleClick={() => openWindow('projects')}
+            position={{ x: 20, y: 120 }}
+          />
+          <DesktopIcon
+            icon="⚙️"
+            label="Skills.sys"
+            onDoubleClick={() => openWindow('skills')}
+            position={{ x: 20, y: 220 }}
+          />
+          <DesktopIcon
+            icon="📧"
+            label="Contact.app"
+            onDoubleClick={() => openWindow('contact')}
+            position={{ x: 20, y: 320 }}
+          />
+        </div>
+
+        {/* Mobile Menu */}
+        <MobileMenu
+          windows={windows}
+          onItemClick={openWindow}
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
         />
 
         {/* Windows */}
@@ -170,6 +188,7 @@ function App() {
             focusWindow(id)
           }
         }}
+        onStartClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
     </>
   )

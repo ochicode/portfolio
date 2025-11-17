@@ -2,17 +2,17 @@ import React from 'react'
 
 const About: React.FC = () => {
   return (
-    <div className="min-w-[400px] max-w-[600px]">
+    <div className="md:min-w-[400px] md:max-w-[600px]">
       <div className="mb-4 pb-2 border-b-2 border-win95-dark">
         <h2 className="text-base text-win95-text m-0">👋 Hello, I'm [Your Name]</h2>
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="win95-panel flex gap-4 p-3 items-center">
-          <div className="text-[64px] leading-none">
+        <div className="win95-panel flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 items-center">
+          <div className="text-[48px] sm:text-[64px] leading-none">
             👨‍💻
           </div>
-          <div className="flex-1">
+          <div className="flex-1 text-center sm:text-left">
             <p className="font-bold text-sm mb-1 text-win95-active m-0">Software Engineer & Tech Lead</p>
             <p className="text-[11px] text-win95-text m-0">Building innovative solutions with code</p>
           </div>
