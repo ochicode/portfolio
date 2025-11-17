@@ -1,0 +1,104 @@
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: var(--taskbar-bg);
+  border-top: 2px solid var(--window-border-light);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  z-index: 9999;
+  box-shadow: inset 0 1px 0 var(--window-border-light);
+}
+
+.start-button {
+  height: 32px;
+  padding: 0 16px;
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+  font-size: 11px;
+  box-shadow: inset 1px 1px 0 var(--button-highlight);
+}
+
+.start-button:hover {
+  background: #d4d4d4;
+}
+
+.start-button:active {
+  border-color: var(--button-dark-shadow) var(--button-highlight) var(--button-highlight) var(--button-dark-shadow);
+  box-shadow: inset -1px -1px 0 var(--button-highlight);
+  padding-top: 2px;
+}
+
+.start-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.start-text {
+  line-height: 1;
+}
+
+.taskbar-windows {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.taskbar-windows::-webkit-scrollbar {
+  height: 0;
+}
+
+.taskbar-window {
+  height: 32px;
+  padding: 0 12px;
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+}
+
+.taskbar-window:hover {
+  background: #d4d4d4;
+}
+
+.taskbar-window.active {
+  border-color: var(--button-dark-shadow) var(--button-highlight) var(--button-highlight) var(--button-dark-shadow);
+  box-shadow: inset -1px -1px 0 var(--button-highlight);
+  padding-top: 2px;
+}
+
+.taskbar-tray {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+  height: 32px;
+  border: 2px solid;
+  border-color: var(--button-dark-shadow) var(--button-highlight) var(--button-highlight) var(--button-dark-shadow);
+  background: var(--window-bg);
+}
+
+.taskbar-clock {
+  font-size: 11px;
+  padding: 0 8px;
+  font-family: 'MS Sans Serif', sans-serif;
+}

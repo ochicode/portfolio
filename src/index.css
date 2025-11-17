@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Retro Desktop Color Palette */
+  --desktop-bg: #008080;
+  --window-bg: #c0c0c0;
+  --window-border-light: #ffffff;
+  --window-border-dark: #808080;
+  --window-border-darkest: #000000;
+  --taskbar-bg: #c0c0c0;
+  --button-face: #c0c0c0;
+  --button-highlight: #ffffff;
+  --button-shadow: #808080;
+  --button-dark-shadow: #000000;
+  --text-primary: #000000;
+  --active-title: #000080;
+  --active-title-text: #ffffff;
+  --desktop-icon-text: #ffffff;
+  --selection: #000080;
+  --selection-text: #ffffff;
+
+  /* Spacing */
+  --window-padding: 2px;
+  --border-width: 2px;
+}
+
+body {
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+  font-size: 11px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--window-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
+}
+
+::-webkit-scrollbar-button {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
+}
+
+/* Selection */
+::selection {
+  background: var(--selection);
+  color: var(--selection-text);
+}
