@@ -44,6 +44,14 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Apply background
     root.style.setProperty('--bg-type', theme.background.type)
     root.style.setProperty('--bg-value', theme.background.value)
+
+    // Apply taskbar settings
+    root.style.setProperty('--taskbar-position', theme.taskbar.position)
+    root.style.setProperty('--taskbar-transparent', theme.taskbar.transparent ? '1' : '0')
+    root.style.setProperty('--taskbar-blur', theme.taskbar.blur ? 'blur(10px)' : 'none')
+
+    // Apply cursor
+    root.style.cursor = theme.cursor
   }
 
   const setTheme = (themeId: string) => {

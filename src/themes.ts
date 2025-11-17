@@ -23,6 +23,12 @@ export interface Theme {
     type: 'pattern' | 'gradient' | 'image'
     value: string
   }
+  taskbar: {
+    position: 'left' | 'center' | 'space-between'
+    transparent: boolean
+    blur: boolean
+  }
+  cursor: string
 }
 
 export const themes: Record<string, Theme> = {
@@ -50,7 +56,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'pattern',
       value: 'linear-gradient(45deg, #008080 25%, transparent 25%), linear-gradient(-45deg, #008080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #008080 75%), linear-gradient(-45deg, transparent 75%, #008080 75%)'
-    }
+    },
+    taskbar: {
+      position: 'left',
+      transparent: false,
+      blur: false
+    },
+    cursor: 'default'
   },
 
   spotify: {
@@ -77,7 +89,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'gradient',
       value: 'linear-gradient(180deg, #1e3264 0%, #121212 100%)'
-    }
+    },
+    taskbar: {
+      position: 'center',
+      transparent: true,
+      blur: true
+    },
+    cursor: 'pointer'
   },
 
   modern: {
@@ -104,7 +122,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'gradient',
       value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-    }
+    },
+    taskbar: {
+      position: 'center',
+      transparent: true,
+      blur: true
+    },
+    cursor: 'default'
   },
 
   cyberpunk: {
@@ -131,7 +155,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'gradient',
       value: 'linear-gradient(180deg, #0a0e27 0%, #1a0033 100%)'
-    }
+    },
+    taskbar: {
+      position: 'left',
+      transparent: true,
+      blur: false
+    },
+    cursor: 'crosshair'
   },
 
   nature: {
@@ -158,7 +188,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'gradient',
       value: 'linear-gradient(180deg, #2d5016 0%, #1a2f0a 100%)'
-    }
+    },
+    taskbar: {
+      position: 'space-between',
+      transparent: false,
+      blur: false
+    },
+    cursor: 'default'
   },
 
   vaporwave: {
@@ -185,7 +221,13 @@ export const themes: Record<string, Theme> = {
     background: {
       type: 'gradient',
       value: 'linear-gradient(180deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%)'
-    }
+    },
+    taskbar: {
+      position: 'center',
+      transparent: true,
+      blur: false
+    },
+    cursor: 'help'
   }
 }
 

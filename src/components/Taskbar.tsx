@@ -22,12 +22,23 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick, onStartClick 
     return `${hours}:${minutes} ${ampm}`
   }
 
+  const taskbarTransparent = getComputedStyle(document.documentElement)
+    .getPropertyValue('--taskbar-transparent')
+    .trim() === '1'
+
+  const justifyContent = getComputedStyle(document.documentElement)
+    .getPropertyValue('--taskbar-position')
+    .trim() || 'left'
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-10 border-t-2 flex items-center p-0.5 gap-0.5 z-[9999]"
+    <div className="fixed bottom-0 left-0 right-0 h-10 border-t-2 flex items-center p-0.5 gap-0.5 z-[9999] transition-all"
          style={{
            background: 'var(--color-window)',
            borderColor: 'var(--color-window-border)',
-           boxShadow: 'inset 0 1px 0 var(--color-window-border)'
+           boxShadow: 'inset 0 1px 0 var(--color-window-border)',
+           opacity: taskbarTransparent ? 0.85 : 1,
+           backdropFilter: taskbarTransparent ? 'var(--taskbar-blur)' : 'none',
+           WebkitBackdropFilter: taskbarTransparent ? 'var(--taskbar-blur)' : 'none'
          }}>
       <button
         className="win95-button h-8 px-4 flex items-center gap-1 font-bold text-[11px]"
@@ -36,7 +47,12 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick, onStartClick 
         <span className="text-base leading-none">🪟</span>
         <span className="leading-none hidden sm:inline">Start</span>
       </button>
-      <div className="flex-1 flex gap-0.5 overflow-x-auto overflow-y-hidden scrollbar-none">
+      <div
+        className="flex-1 flex gap-0.5 overflow-x-auto overflow-y-hidden scrollbar-none"
+        style={{
+          justifyContent: justifyContent === 'left' ? 'flex-start' : justifyContent
+        }}
+      >
         {windows.map(win => (
           <button
             key={win.id}
