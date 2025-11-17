@@ -1,5 +1,4 @@
 import React from 'react'
-import './Taskbar.css'
 import { WindowState } from '../App'
 
 interface TaskbarProps {
@@ -23,24 +22,36 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick }) => {
   }
 
   return (
-    <div className="taskbar">
-      <button className="start-button">
-        <span className="start-icon">🪟</span>
-        <span className="start-text">Start</span>
+    <div className="fixed bottom-0 left-0 right-0 h-10 bg-win95-window border-t-2 border-white flex items-center p-0.5 gap-0.5 z-[9999] shadow-[inset_0_1px_0_#ffffff]">
+      <button className="win95-button h-8 px-4 flex items-center gap-1 font-bold text-[11px]">
+        <span className="text-base leading-none">🪟</span>
+        <span className="leading-none">Start</span>
       </button>
-      <div className="taskbar-windows">
+      <div className="flex-1 flex gap-0.5 overflow-x-auto overflow-y-hidden scrollbar-none">
         {windows.map(win => (
           <button
             key={win.id}
-            className={`taskbar-window ${win.isMinimized ? '' : 'active'}`}
+            className={`win95-button h-8 px-3 text-[11px] whitespace-nowrap max-w-[200px] overflow-hidden text-ellipsis flex items-center ${
+              !win.isMinimized ? 'border-win95-darkest' : ''
+            }`}
             onClick={() => onWindowClick(win.id)}
+            style={
+              !win.isMinimized
+                ? {
+                    borderColor: '#000000 #ffffff #ffffff #000000',
+                    boxShadow: 'inset -1px -1px 0 #ffffff',
+                    paddingTop: '2px',
+                  }
+                : undefined
+            }
           >
             {win.title}
           </button>
         ))}
       </div>
-      <div className="taskbar-tray">
-        <div className="taskbar-clock">
+      <div className="flex items-center gap-2 px-1 h-8 border-2 bg-win95-window"
+           style={{ borderColor: '#808080 #ffffff #ffffff #808080' }}>
+        <div className="text-[11px] px-2">
           {formatTime(time)}
         </div>
       </div>

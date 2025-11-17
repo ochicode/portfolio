@@ -1,5 +1,4 @@
 import React from 'react'
-import './Projects.css'
 
 interface Project {
   id: string
@@ -47,31 +46,35 @@ const Projects: React.FC = () => {
   ]
 
   return (
-    <div className="window-section projects-section">
-      <div className="section-header">
-        <h2>📁 My Projects</h2>
+    <div className="min-w-[500px] max-w-[700px]">
+      <div className="mb-4 pb-2 border-b-2 border-win95-dark">
+        <h2 className="text-base text-win95-text m-0">📁 My Projects</h2>
       </div>
 
-      <div className="projects-content">
-        <p className="projects-intro">
+      <div className="flex flex-col gap-4">
+        <p className="m-0 mb-4 text-[11px] win95-panel p-2">
           Here are some of the projects I've worked on. Each represents unique challenges and learning experiences.
         </p>
 
-        <div className="projects-grid">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
           {projects.map(project => (
-            <div key={project.id} className="project-card">
-              <div className="project-header">
-                <span className="project-icon">{project.icon}</span>
-                <h3 className="project-name">{project.name}</h3>
+            <div key={project.id} className="win95-panel p-3 flex flex-col gap-2">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-2xl leading-none">{project.icon}</span>
+                <h3 className="text-xs font-bold m-0 text-win95-text">{project.name}</h3>
               </div>
-              <p className="project-description">{project.description}</p>
-              <div className="project-tech">
+              <p className="text-[11px] leading-normal m-0 flex-1 text-win95-text">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-1 mt-1">
                 {project.tech.map(tech => (
-                  <span key={tech} className="tech-tag">{tech}</span>
+                  <span key={tech} className="text-[9px] px-1.5 py-0.5 bg-win95-window border border-win95-dark whitespace-nowrap">
+                    {tech}
+                  </span>
                 ))}
               </div>
               {project.link && (
-                <button className="project-link-btn">
+                <button className="win95-button mt-2 px-3 py-1 text-[11px] self-start">
                   View Project →
                 </button>
               )}

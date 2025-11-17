@@ -1,75 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply overflow-hidden select-none;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+    font-size: 11px;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: pixelated;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-win95-window;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-win95-window border-2;
+    border-color: #ffffff #000000 #000000 #ffffff;
+  }
+
+  ::-webkit-scrollbar-button {
+    @apply bg-win95-window border-2;
+    border-color: #ffffff #000000 #000000 #ffffff;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-win95-active text-white;
+  }
 }
 
-:root {
-  /* Retro Desktop Color Palette */
-  --desktop-bg: #008080;
-  --window-bg: #c0c0c0;
-  --window-border-light: #ffffff;
-  --window-border-dark: #808080;
-  --window-border-darkest: #000000;
-  --taskbar-bg: #c0c0c0;
-  --button-face: #c0c0c0;
-  --button-highlight: #ffffff;
-  --button-shadow: #808080;
-  --button-dark-shadow: #000000;
-  --text-primary: #000000;
-  --active-title: #000080;
-  --active-title-text: #ffffff;
-  --desktop-icon-text: #ffffff;
-  --selection: #000080;
-  --selection-text: #ffffff;
+@layer components {
+  /* Windows 95 Button Style */
+  .win95-button {
+    @apply bg-win95-window border-2 cursor-pointer flex items-center justify-center;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #dfdfdf, inset -2px -2px 0 #808080, inset 2px 2px 0 #ffffff;
+  }
 
-  /* Spacing */
-  --window-padding: 2px;
-  --border-width: 2px;
-}
+  .win95-button:hover:not(:disabled) {
+    @apply bg-win95-light;
+  }
 
-body {
-  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
-  font-size: 11px;
-  overflow: hidden;
-  user-select: none;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  image-rendering: pixelated;
-}
+  .win95-button:active:not(:disabled) {
+    border-color: #000000 #ffffff #ffffff #000000;
+    box-shadow: inset 1px 1px 0 #000000;
+    padding-top: 2px;
+    padding-left: 2px;
+  }
 
-.pixel-font {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 8px;
-  line-height: 1.6;
-}
+  .win95-button:disabled {
+    @apply text-win95-dark cursor-default;
+  }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
-}
+  /* Windows 95 Window Style */
+  .win95-window {
+    @apply bg-win95-window border-2 flex flex-col;
+    border-color: #ffffff #000000 #000000 #ffffff;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--window-bg);
-}
+  /* Windows 95 Panel/Inset Style */
+  .win95-panel {
+    @apply bg-white border-2;
+    border-color: #808080 #ffffff #ffffff #808080;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: var(--button-face);
-  border: 2px solid;
-  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
-}
+  /* Windows 95 Input Style */
+  .win95-input {
+    @apply font-sans text-[11px] p-1 border-2 bg-white;
+    border-color: #808080 #ffffff #ffffff #808080;
+  }
 
-::-webkit-scrollbar-button {
-  background: var(--button-face);
-  border: 2px solid;
-  border-color: var(--button-highlight) var(--button-dark-shadow) var(--button-dark-shadow) var(--button-highlight);
-}
-
-/* Selection */
-::selection {
-  background: var(--selection);
-  color: var(--selection-text);
+  .win95-input:focus {
+    @apply outline-none border-win95-active;
+  }
 }

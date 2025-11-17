@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Draggable, { DraggableEvent, DraggableData } from 'react-draggable'
-import './Window.css'
 
 interface WindowProps {
   title: string
@@ -39,25 +38,44 @@ const Window: React.FC<WindowProps> = ({
       bounds="parent"
     >
       <div
-        className="window"
+        className="win95-window absolute min-w-[300px] max-w-[90vw]"
         style={{ zIndex }}
         onMouseDown={onFocus}
       >
-        <div className="window-title-bar">
-          <span className="window-title">{title}</span>
-          <div className="window-controls">
-            <button className="window-button" onClick={onMinimize} aria-label="Minimize">
-              <span>_</span>
+        <div
+          className="window-title-bar px-1 py-0.5 flex justify-between items-center cursor-move select-none h-6"
+          style={{
+            background: 'linear-gradient(90deg, #000080, #1084d0)'
+          }}
+        >
+          <span className="text-white font-bold text-[11px] whitespace-nowrap overflow-hidden text-ellipsis flex-1 tracking-wide">
+            {title}
+          </span>
+          <div className="flex gap-0.5">
+            <button
+              className="win95-button w-[18px] h-[18px] text-[10px] font-bold leading-none p-0"
+              onClick={onMinimize}
+              aria-label="Minimize"
+            >
+              <span className="block -mt-0.5">_</span>
             </button>
-            <button className="window-button" disabled aria-label="Maximize">
-              <span>□</span>
+            <button
+              className="win95-button w-[18px] h-[18px] text-[10px] font-bold leading-none p-0"
+              disabled
+              aria-label="Maximize"
+            >
+              <span className="block -mt-0.5">□</span>
             </button>
-            <button className="window-button" onClick={onClose} aria-label="Close">
-              <span>✕</span>
+            <button
+              className="win95-button w-[18px] h-[18px] text-[10px] font-bold leading-none p-0"
+              onClick={onClose}
+              aria-label="Close"
+            >
+              <span className="block -mt-0.5">✕</span>
             </button>
           </div>
         </div>
-        <div className="window-content">
+        <div className="p-2 bg-win95-window overflow-auto max-h-[70vh] min-h-[200px] select-text">
           {children}
         </div>
       </div>

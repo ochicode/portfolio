@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './Contact.css'
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -22,87 +21,95 @@ const Contact: React.FC = () => {
   }
 
   return (
-    <div className="window-section contact-section">
-      <div className="section-header">
-        <h2>📧 Contact.app</h2>
+    <div className="min-w-[450px] max-w-[600px]">
+      <div className="mb-4 pb-2 border-b-2 border-win95-dark">
+        <h2 className="text-base text-win95-text m-0">📧 Contact.app</h2>
       </div>
 
-      <div className="contact-content">
-        <p className="contact-intro">
+      <div className="flex flex-col gap-4">
+        <p className="m-0 mb-4 text-[11px] win95-panel p-2">
           Let's connect! Reach out for collaboration, opportunities, or just to say hi.
         </p>
 
-        <div className="contact-methods">
-          <div className="contact-method">
-            <span className="method-icon">📧</span>
-            <div className="method-info">
-              <strong>Email</strong>
-              <p>your.email@example.com</p>
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          <div className="win95-panel flex gap-3 items-center p-2.5">
+            <span className="text-2xl leading-none">📧</span>
+            <div className="flex-1 min-w-0">
+              <strong className="text-[11px] block mb-0.5">Email</strong>
+              <p className="m-0 text-[10px] text-win95-active whitespace-nowrap overflow-hidden text-ellipsis">
+                your.email@example.com
+              </p>
             </div>
           </div>
-          <div className="contact-method">
-            <span className="method-icon">💼</span>
-            <div className="method-info">
-              <strong>LinkedIn</strong>
-              <p>linkedin.com/in/yourprofile</p>
+          <div className="win95-panel flex gap-3 items-center p-2.5">
+            <span className="text-2xl leading-none">💼</span>
+            <div className="flex-1 min-w-0">
+              <strong className="text-[11px] block mb-0.5">LinkedIn</strong>
+              <p className="m-0 text-[10px] text-win95-active whitespace-nowrap overflow-hidden text-ellipsis">
+                linkedin.com/in/yourprofile
+              </p>
             </div>
           </div>
-          <div className="contact-method">
-            <span className="method-icon">🐙</span>
-            <div className="method-info">
-              <strong>GitHub</strong>
-              <p>github.com/yourusername</p>
+          <div className="win95-panel flex gap-3 items-center p-2.5">
+            <span className="text-2xl leading-none">🐙</span>
+            <div className="flex-1 min-w-0">
+              <strong className="text-[11px] block mb-0.5">GitHub</strong>
+              <p className="m-0 text-[10px] text-win95-active whitespace-nowrap overflow-hidden text-ellipsis">
+                github.com/yourusername
+              </p>
             </div>
           </div>
-          <div className="contact-method">
-            <span className="method-icon">🐦</span>
-            <div className="method-info">
-              <strong>Twitter</strong>
-              <p>@yourhandle</p>
+          <div className="win95-panel flex gap-3 items-center p-2.5">
+            <span className="text-2xl leading-none">🐦</span>
+            <div className="flex-1 min-w-0">
+              <strong className="text-[11px] block mb-0.5">Twitter</strong>
+              <p className="m-0 text-[10px] text-win95-active whitespace-nowrap overflow-hidden text-ellipsis">
+                @yourhandle
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="contact-form-wrapper">
-          <h3 className="form-title">Send a Message</h3>
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name:</label>
+        <div className="win95-panel p-3">
+          <h3 className="text-xs m-0 mb-3 pb-2 border-b border-win95-dark">Send a Message</h3>
+          <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="name" className="text-[11px] font-bold">Name:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="form-input"
+                className="win95-input"
                 required
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="email" className="text-[11px] font-bold">Email:</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="form-input"
+                className="win95-input"
                 required
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="message">Message:</label>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="message" className="text-[11px] font-bold">Message:</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="form-textarea"
+                className="win95-input resize-y min-h-[80px]"
                 rows={5}
                 required
               />
             </div>
-            <button type="submit" className="submit-btn">
+            <button type="submit" className="win95-button px-4 py-1.5 text-[11px] font-bold self-start">
               Send Message
             </button>
           </form>
