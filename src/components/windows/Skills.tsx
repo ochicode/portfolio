@@ -1,5 +1,4 @@
 import React from 'react'
-import './Skills.css'
 
 interface SkillCategory {
   category: string
@@ -42,30 +41,32 @@ const Skills: React.FC = () => {
   ]
 
   return (
-    <div className="window-section skills-section">
-      <div className="section-header">
-        <h2>⚙️ Skills.sys</h2>
+    <div className="min-w-[500px] max-w-[650px]">
+      <div className="mb-4 pb-2 border-b-2 border-win95-dark">
+        <h2 className="text-base text-win95-text m-0">⚙️ Skills.sys</h2>
       </div>
 
-      <div className="skills-content">
-        <div className="system-info">
-          <p><strong>System:</strong> Full-Stack Development Environment</p>
-          <p><strong>Status:</strong> <span className="status-ok">● OPERATIONAL</span></p>
-          <p><strong>Version:</strong> Senior Engineer v5.0</p>
+      <div className="flex flex-col gap-4">
+        <div className="p-3 bg-black text-green-400 font-mono text-[11px] win95-panel mb-4 leading-loose">
+          <p className="m-0"><strong>System:</strong> Full-Stack Development Environment</p>
+          <p className="m-0"><strong>Status:</strong> <span className="text-green-500 font-bold">● OPERATIONAL</span></p>
+          <p className="m-0"><strong>Version:</strong> Senior Engineer v5.0</p>
         </div>
 
-        <div className="skills-grid">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
           {skillCategories.map(({ category, icon, skills }) => (
-            <div key={category} className="skill-category">
-              <div className="category-header">
-                <span className="category-icon">{icon}</span>
-                <h3 className="category-name">{category}</h3>
+            <div key={category} className="win95-panel p-3">
+              <div className="flex items-center gap-2 mb-3 pb-2 border-b border-win95-dark">
+                <span className="text-xl leading-none">{icon}</span>
+                <h3 className="text-xs font-bold m-0 text-win95-text">{category}</h3>
               </div>
-              <div className="skills-list">
+              <div className="flex flex-col gap-1.5">
                 {skills.map(skill => (
-                  <div key={skill} className="skill-item">
-                    <div className="skill-checkbox">✓</div>
-                    <span className="skill-name">{skill}</span>
+                  <div key={skill} className="flex items-center gap-2 text-[11px]">
+                    <div className="win95-panel w-3.5 h-3.5 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                      ✓
+                    </div>
+                    <span className="text-win95-text leading-snug">{skill}</span>
                   </div>
                 ))}
               </div>
