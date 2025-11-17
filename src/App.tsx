@@ -8,6 +8,7 @@ import About from './components/windows/About'
 import Projects from './components/windows/Projects'
 import Skills from './components/windows/Skills'
 import Contact from './components/windows/Contact'
+import ThemeToggle from './components/ThemeToggle'
 import './App.css'
 
 export interface WindowState {
@@ -62,6 +63,16 @@ function App() {
       zIndex: 1,
       position: { x: 250, y: 200 },
       icon: '📧'
+    },
+    {
+      id: 'themes',
+      title: 'Themes.exe',
+      component: ThemeToggle,
+      isOpen: false,
+      isMinimized: false,
+      zIndex: 1,
+      position: { x: 50, y: 50 },
+      icon: '🎨'
     }
   ])
 
@@ -148,6 +159,12 @@ function App() {
             label="Contact.app"
             onDoubleClick={() => openWindow('contact')}
             position={{ x: 20, y: 320 }}
+          />
+          <DesktopIcon
+            icon="🎨"
+            label="Themes.exe"
+            onDoubleClick={() => openWindow('themes')}
+            position={{ x: 20, y: 420 }}
           />
         </div>
 

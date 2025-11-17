@@ -23,7 +23,12 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick, onStartClick 
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 h-10 bg-win95-window border-t-2 border-white flex items-center p-0.5 gap-0.5 z-[9999] shadow-[inset_0_1px_0_#ffffff]">
+    <div className="fixed bottom-0 left-0 right-0 h-10 border-t-2 flex items-center p-0.5 gap-0.5 z-[9999]"
+         style={{
+           background: 'var(--color-window)',
+           borderColor: 'var(--color-window-border)',
+           boxShadow: 'inset 0 1px 0 var(--color-window-border)'
+         }}>
       <button
         className="win95-button h-8 px-4 flex items-center gap-1 font-bold text-[11px]"
         onClick={onStartClick}
@@ -42,8 +47,8 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick, onStartClick 
             style={
               !win.isMinimized
                 ? {
-                    borderColor: '#000000 #ffffff #ffffff #000000',
-                    boxShadow: 'inset -1px -1px 0 #ffffff',
+                    borderColor: 'var(--color-button-shadow) var(--color-button-highlight) var(--color-button-highlight) var(--color-button-shadow)',
+                    boxShadow: 'inset -1px -1px 0 var(--color-button-highlight)',
                     paddingTop: '2px',
                   }
                 : undefined
@@ -54,8 +59,11 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, onWindowClick, onStartClick 
           </button>
         ))}
       </div>
-      <div className="hidden sm:flex items-center gap-2 px-1 h-8 border-2 bg-win95-window"
-           style={{ borderColor: '#808080 #ffffff #ffffff #808080' }}>
+      <div className="hidden sm:flex items-center gap-2 px-1 h-8 border-2"
+           style={{
+             background: 'var(--color-window)',
+             borderColor: 'var(--color-button-shadow) var(--color-window-border) var(--color-window-border) var(--color-button-shadow)'
+           }}>
         <div className="text-[11px] px-2">
           {formatTime(time)}
         </div>

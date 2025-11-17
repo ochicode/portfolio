@@ -57,10 +57,11 @@ const Window: React.FC<WindowProps> = ({
           isMobile ? 'cursor-default' : 'cursor-move'
         }`}
         style={{
-          background: 'linear-gradient(90deg, #000080, #1084d0)'
+          background: 'var(--color-title-bar)',
+          color: 'var(--color-title-bar-text)'
         }}
       >
-        <span className="text-white font-bold text-[11px] whitespace-nowrap overflow-hidden text-ellipsis flex-1 tracking-wide">
+        <span className="font-bold text-[11px] whitespace-nowrap overflow-hidden text-ellipsis flex-1 tracking-wide">
           {title}
         </span>
         <div className="flex gap-0.5">
@@ -87,11 +88,12 @@ const Window: React.FC<WindowProps> = ({
           </button>
         </div>
       </div>
-      <div className={`p-2 bg-win95-window overflow-auto select-text ${
+      <div className={`p-2 overflow-auto select-text ${
         isMobile
           ? 'h-[calc(100vh-64px)]'
           : 'max-h-[70vh] min-h-[200px]'
-      }`}>
+      }`}
+      style={{ background: 'var(--color-window)' }}>
         {children}
       </div>
     </div>
